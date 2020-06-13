@@ -52,10 +52,12 @@ def extract_names(filename):
         only_year = year.group(1)
         names.append(only_year)
         extNames = re.findall(r'<td>(\d+)</td><td>(\w+)</td><td>(\w+)</td>', contents)
-    
+        extNames = list(dict.fromkeys(extNames))
     for name in extNames:
         names.append(name[2] +", "+ name[0])
-        names.append(name[1] +", " + name[0])
+        names.append(name[1] + ", " + name[0])
+        
+    
     return sorted(names)
 
 
